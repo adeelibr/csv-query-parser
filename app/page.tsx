@@ -1,19 +1,18 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import React, { useState } from 'react';
 import { FileTextIcon } from 'lucide-react';
 
-import { FileUpload } from './components/FileUpload';
-import { QueryBuilder } from './components/QueryBuilder';
-import { DataTable } from './components/DataTable';
-import { AdSection } from './components/AdSection';
+import { FileUpload } from '@/components/FileUpload';
+import { QueryBuilder } from '@/components/QueryBuilder';
+import { DataTable } from '@/components/DataTable';
+import { AdSection } from '@/components/AdSection';
 
-import { parseCSV } from './utils/csvParser';
-import { detectColumnTypes } from './utils/columnTypeDetection';
-import { applyFilters } from './utils/filterOperations';
+import { parseCSV } from '@/lib/csvParser';
+import { detectColumnTypes } from '@/lib/columnTypeDetection';
+import { applyFilters } from '@/lib/filterOperations';
 
-import { Column } from './types/column';
-import { FilterGroup } from './types/filter';
+import { Column } from '@/types/column';
+import { FilterGroup } from '@/types/filter';
 
 export default function Home() {
   const [data, setData] = useState<any[]>([]);

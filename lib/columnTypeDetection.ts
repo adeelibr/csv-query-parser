@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { Column, ColumnType } from '../types/column';
+import { Column, ColumnType } from '@/types/column';
 
 export function detectColumnTypes(data: any[]): Column[] {
   if (data.length === 0) return [];
