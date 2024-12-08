@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import React, { useState } from 'react';
 import { FileTextIcon } from 'lucide-react';
@@ -61,7 +62,9 @@ export default function Home() {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-8">
               <FileTextIcon className="h-8 w-8 text-primary" />
-              <h1 className="text-3xl font-bold text-primary">CSV Query Parser</h1>
+              <h1 className="text-3xl font-bold text-primary">
+                CSV Query Parser
+              </h1>
             </div>
 
             {error && (
@@ -98,6 +101,20 @@ export default function Home() {
           <div className="lg:block flex flex-col justify-center">
             <div className="lg:sticky lg:top-8">
               <AdSection />
+              <div className='mt-3'>
+                <a
+                  href="https://www.producthunt.com/posts/csv-query-playground?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-csv&#0045;query&#0045;playground"
+                  target="_blank"
+                >
+                  <img
+                    src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=686638&theme=neutral"
+                    alt="CSV&#0032;Query&#0032;Playground - Query&#0032;from&#0032;a&#0032;large&#0032;CSV&#0032;dataset&#0032;clietn&#0032;side | Product Hunt"
+                    // style="width: 250px; height: 54px;"
+                    width="250"
+                    height="54"
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
