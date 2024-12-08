@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import { isDate } from '@/lib/date';
 import { Column, ColumnType } from '@/types/column';
 
 export function detectColumnTypes(data: any[]): Column[] {
@@ -22,7 +22,7 @@ function detectColumnType(data: any[], columnName: string): ColumnType {
   const allNumbers = values.every((value) => !isNaN(Number(value)));
   if (allNumbers) return 'number';
 
-  const allDates = values.every((value) => dayjs(value).isValid());
+  const allDates = values.every((value) => isDate(value));
   if (allDates) return 'date';
 
   const allBooleans = values.every(

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search } from 'lucide-react';
+import { Search, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 import { Filter, FilterGroup } from '../types/filter';
@@ -11,19 +11,26 @@ interface QueryBuilderProps {
   onQueryChange: (filterGroup: FilterGroup) => void;
 }
 
+const initFilterGroup: FilterGroup = {
+  filters: [
+    {
+      id: '1',
+      column: '',
+      operator: 'contains',
+      value: '',
+      columnType: 'text',
+    },
+  ],
+  conjunction: 'AND',
+}
+
+const emptyFilterGroup: FilterGroup = {
+  filters: [],
+  conjunction: 'AND',
+};
+
 export function QueryBuilder({ columns, onQueryChange }: QueryBuilderProps) {
-  const [filterGroup, setFilterGroup] = useState<FilterGroup>({
-    filters: [
-      {
-        id: '1',
-        column: '',
-        operator: 'contains',
-        value: '',
-        columnType: 'text',
-      },
-    ],
-    conjunction: 'AND',
-  });
+  const [filterGroup, setFilterGroup] = useState<FilterGroup>(initFilterGroup);
 
   const handleFilterUpdate = (index: number, updatedFilter: Filter) => {
     const newFilters = [...filterGroup.filters];
@@ -63,6 +70,15 @@ export function QueryBuilder({ columns, onQueryChange }: QueryBuilderProps) {
     }
   };
 
+  const handleReset = () => {
+    setFilterGroup(initFilterGroup);
+    onQueryChange(emptyFilterGroup);
+  };
+
+  const hasValidFilters = filterGroup.filters.some(
+    (f) => f.column && (f.operator === 'isNull' || f.operator === 'isNotNull' || f.value)
+  );
+
   return (
     <div className="bg-white rounded-lg shadow-sm border border-border p-6 space-y-6">
       <div className="space-y-4">
@@ -96,13 +112,25 @@ export function QueryBuilder({ columns, onQueryChange }: QueryBuilderProps) {
           <option value="OR">Match ANY filter (OR)</option>
         </select>
 
-        <Button 
-          onClick={handleSearch}
-          className="flex items-center gap-2"
-        >
-          <Search className="h-4 w-4" />
-          <span className="hidden sm:inline">Apply Filters</span>
-        </Button>
+        <div className="flex gap-2">
+          <Button 
+            onClick={handleReset}
+            variant="outline"
+            className="flex items-center gap-2"
+            disabled={!hasValidFilters}
+          >
+            <RotateCcw className="h-4 w-4" />
+            <span className="hidden sm:inline">Reset</span>
+          </Button>
+          <Button 
+            onClick={handleSearch}
+            className="flex items-center gap-2"
+            disabled={!hasValidFilters}
+          >
+            <Search className="h-4 w-4" />
+            <span className="hidden sm:inline">Apply Filters</span>
+          </Button>
+        </div>
       </div>
     </div>
   );
