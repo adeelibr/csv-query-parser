@@ -55,7 +55,7 @@ export default function Home() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="">
       <div className="max-w-[1600px] mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="flex-1 min-w-0">
