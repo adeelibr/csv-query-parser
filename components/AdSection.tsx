@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export function AdSection() {
   return (
-    <div className="w-full md:w-[250px] bg-white border border-border p-8 rounded-lg hover:bg-slate-50">
+    <div className="w-full md:w-[250px] bg-white border border-border p-8 rounded-lg hover:bg-slate-50 shadow-lg hover:shadow-xl">
       <div className="flex flex-col items-center text-center space-y-6">
         <div className="bg-primary/10 p-4 rounded-full">
           <Rocket className="w-8 h-8 text-primary" />

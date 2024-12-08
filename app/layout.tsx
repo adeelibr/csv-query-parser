@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} antialiased w-full min-h-fit bg-slate-50`}
+        className={`${poppins.variable} antialiased w-full min-h-fit bg-gradient-to-r from-slate-50 to-green-50 background-animate`}
       >
         {children}
       </body>

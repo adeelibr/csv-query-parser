@@ -79,7 +79,7 @@ export default function Home() {
                     columns={columns}
                     onQueryChange={handleQueryChange}
                   />
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden opacity-[.98] shadow-lg hover:shadow-xl">
                     <DataTable
                       data={paginatedData}
                       columns={columns.map((col) => col.name)}
